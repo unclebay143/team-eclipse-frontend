@@ -1,0 +1,61 @@
+:root {
+  --primary-color: #12205e;
+  --primary-color: #12326b;
+  --secondary-color: #6c757d;
+  --tertiary-color: #0091ff;
+  --app-white: #fff;
+}
+
+.primaryColor {
+  color: var(--primary-color);
+}
+
+.filledBtn {
+  color: var(--app-white);
+  background: var(--primary-color);
+}
+
+.filledBtn:hover {
+  background: var(--app-white);
+  border: 1px solid var(--primary-color);
+}
+
+.outlineBtn {
+  border: 1px solid var(--primary-color);
+}
+
+.outlineBtn:hover {
+  color: var(--app-white);
+  background: var(--primary-color);
+}
+
+.tertiaryColor {
+  color: var(--tertiary-color);
+}
+
+.bgTertiaryColor {
+  color: var(--tertiary-color);
+}
+
+.secondaryColor {
+  color: var(--secondary-color);
+}
+
+.bgPrimaryColor {
+  background-color: var(--primary-color);
+}
+
+.bgPrimaryColor:hover {
+  background-color: var(--primary-color);
+}
+
+.primaryButton {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.primaryButton:hover {
+  color: var(--app-white);
+  border-color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
