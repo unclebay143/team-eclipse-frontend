@@ -1,0 +1,19 @@
+.petitionContainer {
+  padding: 20px;
+}
+
+.heading {
+  height: 255px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+@media (min-width: 900px) {
+  .petitionContainer {
+    /* padding: 30px 80px; */
+    padding-top: 80px;
+  }
+}

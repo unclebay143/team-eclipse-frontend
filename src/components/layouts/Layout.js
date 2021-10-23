@@ -1,15 +1,18 @@
-import React from "react";
-import { Footer } from "./Footer";
-import { Navbar } from "./Navbar";
+import React from 'react';
+import { Footer } from './Footer';
+import { Navbar } from './Navbar';
+import styles from './../styles/layouts.module.css';
 
 export const Layout = ({ children }) => {
   return (
     <React.Fragment>
-      <Navbar />
+      <div className={styles.layout}>
+        <Navbar />
 
-      {children}
+        {children}
 
-      <Footer />
+        <Footer />
+      </div>
     </React.Fragment>
   );
 };

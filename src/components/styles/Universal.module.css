@@ -1,9 +1,11 @@
 :root {
   --primary-color: #12205e;
   --primary-color: #12326b;
+  /* --primary-color: #00bfff; */
   --secondary-color: #6c757d;
   --tertiary-color: #0091ff;
   --app-white: #fff;
+  --app-warning: #ff0000;
 }
 
 .primaryColor {
@@ -41,11 +43,20 @@
   color: var(--secondary-color);
 }
 
+.bgRedColor {
+  background-color: var(--app-warning);
+  color: white;
+  font-weight: 600;
+}
+
 .bgPrimaryColor {
+  color: var(--app-white);
   background-color: var(--primary-color);
+  font-weight: 600;
 }
 
 .bgPrimaryColor:hover {
+  color: inherit;
   background-color: var(--primary-color);
 }
 
