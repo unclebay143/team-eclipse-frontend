@@ -102,11 +102,13 @@ export const Carousel = () => {
             <div className="container">
               <div className="carousel-caption text-end">
                 <h1>Track petition status.</h1>
-                <p>Have a petition reference id? Check the status here</p>
+                <p className="text-warning">
+                  Have a petition reference id? Check the status here
+                </p>
                 <p>
-                  <a
+                  <Link
+                    to="/track_petition"
                     className="btn btn-primary d-inline-flex justify-content-center align-items-center"
-                    href="#"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +122,7 @@ export const Carousel = () => {
                       <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                     </svg>
                     Track Petition
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>

@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
-import { PageLoader } from '../../components/layouts/PageLoader';
 import styles from './new-petition.module.css';
 
 export const NewPetition = () => {
-  // Set loading state to true initially
-  const [loading, setLoading] = useState(true);
-
-  if (loading) return <PageLoader setLoading={setLoading} />;
   return (
     <React.Fragment>
       <div className={`container mt-5 ${styles.petitionFormContainer}`}>
@@ -72,7 +67,7 @@ export const NewPetition = () => {
                     className="form-control ustom-select"
                     id="exampleFormControlSelect1"
                   >
-                    <option selected>Select Option</option>
+                    <option selected>Select option</option>
                     <option value={1}>EFCC</option>
                     <option value={2}>POLICE</option>
                     <option value={3}>DSS</option>
@@ -111,7 +106,7 @@ export const NewPetition = () => {
                     className="form-control"
                     id="exampleFormControlSelect1"
                   >
-                    <option selected>Select Option</option>
+                    <option selected>Select option</option>
                     <option>Robbery</option>
                     <option>Fraud</option>
                     <option>Looting</option>

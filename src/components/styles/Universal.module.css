@@ -53,10 +53,11 @@
   color: var(--app-white);
   background-color: var(--primary-color);
   font-weight: 600;
+  border: none;
 }
 
 .bgPrimaryColor:hover {
-  color: inherit;
+  color: var(--app-white);
   background-color: var(--primary-color);
 }
 
