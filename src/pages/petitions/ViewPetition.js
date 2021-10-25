@@ -17,11 +17,11 @@ export const ViewPetition = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </section>
         {/* Tags */}
-        <div className='my-3'>
-          <span className='badge bg-primary' style={{ marginRight: '0.5rem' }}>
+        <div className="my-3">
+          <span className="badge bg-primary" style={{ marginRight: '0.5rem' }}>
             Primary
           </span>
-          <span className='badge bg-danger'>Danger</span>
+          <span className="badge bg-danger">Danger</span>
         </div>
         {/* Content */}
         <section>
@@ -42,12 +42,12 @@ export const ViewPetition = () => {
           </p>
         </section>
 
-        <strong className='text-danger'>
+        <strong className="text-danger">
           Other sensitive information are hidden and reserved for the right
           agency
         </strong>
       </article>
-      <section className='container'>
+      <section className="container">
         <PetitionSection size={3} />
       </section>
     </React.Fragment>
