@@ -5,8 +5,12 @@ import universalStyles from './../styles/universal.module.css';
 export const Accordion = ({ heading, headingcenter }) => {
   return (
     <React.Fragment>
-      <div className="accordion container" id="accordionExample">
-        <h2 className={`pb-5 ${headingcenter ? 'text-center' : 'text-left'}`}>
+      <div className="accordion pt-5 container" id="accordionExample">
+        <h2
+          className={`pb-5 custom-primary-color ${
+            headingcenter ? 'text-center' : 'text-left'
+          }`}
+        >
           {heading || 'Accordion Section'}
         </h2>
         <div className="card">
@@ -33,7 +37,7 @@ export const Accordion = ({ heading, headingcenter }) => {
             aria-labelledby="headingOne"
             data-parent="#accordionExample"
           >
-            <div className="card-body">
+            <div className="card-body custom-primary-color">
               Anim pariatur cliche reprehenderit, enim eiusmod high life
               accusamus terry richardson ad squid. 3 wolf moon officia aute, non
               cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
@@ -71,7 +75,7 @@ export const Accordion = ({ heading, headingcenter }) => {
             aria-labelledby="headingTwo"
             data-parent="#accordionExample"
           >
-            <div className="card-body">
+            <div className="card-body custom-primary-color">
               Anim pariatur cliche reprehenderit, enim eiusmod high life
               accusamus terry richardson ad squid. 3 wolf moon officia aute, non
               cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
@@ -109,7 +113,7 @@ export const Accordion = ({ heading, headingcenter }) => {
             aria-labelledby="headingThree"
             data-parent="#accordionExample"
           >
-            <div className="card-body">
+            <div className="card-body custom-primary-color">
               Anim pariatur cliche reprehenderit, enim eiusmod high life
               accusamus terry richardson ad squid. 3 wolf moon officia aute, non
               cupidatat skateboard dolor brunch. Food truck quinoa nesciunt

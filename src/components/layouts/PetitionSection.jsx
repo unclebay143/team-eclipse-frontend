@@ -22,16 +22,20 @@ export const PetitionSection = ({ size = 6, heading, headingcenter }) => {
   }, []);
 
   if (!petitions)
-    return <p className='text-center lead'>Loading petitions...</p>;
+    return <p className="text-center lead">Loading petitions...</p>;
 
   return (
     <React.Fragment>
-      <div className='album py-5 bg-light'>
-        <div className='container'>
-          <h2 className={`pb-5 ${headingcenter ? 'text-center' : 'text-left'}`}>
+      <div className="pt-5 bg-light">
+        <div className="container">
+          <h2
+            className={`pb-5 custom-primary-color ${
+              headingcenter ? 'text-center' : 'text-left'
+            }`}
+          >
             {heading || 'Public Petitions'}
           </h2>
-          <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3'>
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {petitions
               .sort(() => 0.5 - Math.random())
               .slice(0, size)
@@ -39,9 +43,9 @@ export const PetitionSection = ({ size = 6, heading, headingcenter }) => {
                 return <PetitionCard key={index} title={title} rest={rest} />;
               })}
           </div>
-          <div className='text-center my-5'>
+          <div className="text-center my-5">
             <Link
-              to='/petitions'
+              to="/petitions"
               className={`btn ${universalStyles.outlineBtn}`}
             >
               Load More

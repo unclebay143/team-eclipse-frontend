@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import React from 'react';
 import styles from './track-petition.module.css';
-import universalStyles from './../../components/styles/universal.module.css';
+import universalStyles from './../../../components/styles/universal.module.css';
 
 export const TrackPetition = () => {
   return (

@@ -39,8 +39,10 @@ export const NewPetition = () => {
             <form>
               <section className="section-1">
                 <div className="text-center pb-1 w-lg-50 m-auto">
-                  <h2>SECTION A</h2>
-                  <h5 className="mb-3">(Non-Sensitive information)</h5>
+                  <h2 className="custom-primary-color">SECTION A</h2>
+                  <h5 className="mb-3 custom-primary-color">
+                    (Non-Sensitive information)
+                  </h5>
                   <p className="text-warning">
                     Only fill non-sensitive information in this section, as this
                     will be visible to the public. Information like suspect real
@@ -49,8 +51,11 @@ export const NewPetition = () => {
                   </p>
                 </div>
                 <div className="form-group mt-4">
-                  <label className="mb-2" htmlFor="exampleFormControlInput1">
-                    Report title (required)
+                  <label
+                    className="mb-2 custom-primary-color"
+                    htmlFor="exampleFormControlInput1"
+                  >
+                    Report title
                   </label>
                   <input
                     type="text"
@@ -60,7 +65,10 @@ export const NewPetition = () => {
                   />
                 </div>
                 <div className="form-group mt-4">
-                  <label className="mb-2" htmlFor="exampleFormControlSelect1">
+                  <label
+                    className="mb-2 custom-primary-color"
+                    htmlFor="exampleFormControlSelect1"
+                  >
                     Select preferred agency (optional)
                   </label>
                   <select
@@ -75,8 +83,11 @@ export const NewPetition = () => {
                 </div>
 
                 <div className="form-group mt-4">
-                  <label className="mb-2" htmlFor="exampleFormControlTextarea1">
-                    Short Description of the report (required)
+                  <label
+                    className="mb-2 custom-primary-color"
+                    htmlFor="exampleFormControlTextarea1"
+                  >
+                    Short Description of the report
                   </label>
                   <textarea
                     className="form-control"
@@ -90,8 +101,10 @@ export const NewPetition = () => {
               {/* SECTION 2 */}
               <section className="section-2 mt-5">
                 <div className="text-center pb-1 w-lg-50 m-auto">
-                  <h2>SECTION B</h2>
-                  <h5 className="mb-3">(Sensitive information)</h5>
+                  <h2 className="custom-primary-color">SECTION B</h2>
+                  <h5 className="mb-3 custom-primary-color">
+                    (Sensitive information)
+                  </h5>
                   <p className="text-primary">
                     Provide more detailed information about your report, this
                     can include informations like address, phone number and
@@ -99,8 +112,11 @@ export const NewPetition = () => {
                   </p>
                 </div>
                 <div className="form-group mt-4">
-                  <label className="mb-2" htmlFor="exampleFormControlSelect1">
-                    Select Crime Type (required)
+                  <label
+                    className="mb-2 custom-primary-color"
+                    htmlFor="exampleFormControlSelect1"
+                  >
+                    Select Crime Type
                   </label>
                   <select
                     className="form-control"
@@ -115,8 +131,25 @@ export const NewPetition = () => {
                   </select>
                 </div>
                 <div className="form-group mt-4">
-                  <label className="mb-2" htmlFor="exampleFormControlTextarea1">
-                    More information (optional)
+                  <label
+                    className="mb-2 custom-primary-color"
+                    htmlFor="exampleFormControlInput1"
+                  >
+                    Exhibit
+                  </label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="form-group mt-4">
+                  <label
+                    className="mb-2 custom-primary-color"
+                    htmlFor="exampleFormControlTextarea1"
+                  >
+                    More information
                   </label>
                   <textarea
                     className="form-control"
@@ -128,9 +161,12 @@ export const NewPetition = () => {
               </section>
               <div className="form-group mt-4">
                 <input type="checkbox" id="confirmation" />{' '}
-                <label className="text-danger" for="confirmation">
+                <label
+                  className="text custom-primary-color-danger"
+                  for="confirmation"
+                >
                   I confirm the information above are true to the best of my
-                  knownlege
+                  knownledge
                 </label>
               </div>
               <div className="form-group mt-4">

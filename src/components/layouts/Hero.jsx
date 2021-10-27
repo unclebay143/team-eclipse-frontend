@@ -1,6 +1,6 @@
 import React from 'react';
 import universalStyles from './../styles/universal.module.css';
-import { Link } from 'react-dom';
+import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   return (

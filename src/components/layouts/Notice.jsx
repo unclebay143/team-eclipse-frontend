@@ -4,9 +4,9 @@ import React from 'react';
 export const Notice = () => {
   return (
     <React.Fragment>
-      <section className={`container text-center w-50 `}>
+      <section className={`container text-center `}>
         <h2 className="custom-primary-color pb-3">Notice!!!</h2>
-        <p>
+        <p className="custom-primary-color">
           blow the whistle blow the whistle wblowowwkwkwkwji sususjsjs shshshskk
           sjshshshs blow the whistle blow the whistle wblowowwkwkwkwji sususjsjs
           shshshskk sjshshshs blow the whistle blow the whistle wblowowwkwkwkwji
