@@ -8,6 +8,7 @@ import { ViewPetition } from './pages/petitions/ViewPetition';
 import { Petitions } from './pages/petitions/Petitions';
 import { NewPetition } from './pages/new-petition/NewPetition';
 import { Success } from './components/utils/Success';
+import { TrackPetition } from './pages/track-petition/TrackPetition';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/petitions" component={Petitions} />
             <Route path="/new_petition" component={NewPetition} />
             <Route path="/success" component={Success} />
+            <Route path="/track_petition" component={TrackPetition} />
           </Switch>
         </Layout>
       </div>

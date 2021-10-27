@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import universalStyles from './../styles/universal.module.css';
 
-export const Accordion = () => {
+export const Accordion = ({ heading, headingcenter }) => {
   return (
     <React.Fragment>
       <div className="accordion container" id="accordionExample">
+        <h2 className={`pb-5 ${headingcenter ? 'text-center' : 'text-left'}`}>
+          {heading || 'Accordion Section'}
+        </h2>
         <div className="card">
           <div
             className={`card-header ${universalStyles.bgPrimaryColor}`}

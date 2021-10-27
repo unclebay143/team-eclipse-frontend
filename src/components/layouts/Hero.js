@@ -1,5 +1,6 @@
 import React from 'react';
 import universalStyles from './../styles/universal.module.css';
+import { Link } from 'react-dom';
 
 export const Hero = () => {
   return (
@@ -29,7 +30,8 @@ export const Hero = () => {
                 Blow whistle
               </div>
 
-              <div
+              <Link
+                to="/track_petition"
                 className={`btn mx-2 d-flex justify-content-center align-items-center ${universalStyles.outlineBtn}`}
               >
                 <svg
@@ -44,7 +46,7 @@ export const Hero = () => {
                   <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                 </svg>
                 Track Petition
-              </div>
+              </Link>
             </div>
           </div>
         </div>
