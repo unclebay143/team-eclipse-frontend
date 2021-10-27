@@ -1,10 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { sidebarBorder, activeLink } from './../dashboard.module.css';
-import { agencyLinks } from './sidebar-links';
+import { adminSidebarLinks, agencySidebarLinks } from './sidebar-links';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-export const AgencySidebar = () => {
+export const DashboardSidebar = ({ userRole }) => {
+  console.log(userRole);
+  var roleToSidebar = {
+    agency: agencySidebarLinks,
+    admin: adminSidebarLinks,
+  };
+
+  const detectSidebar = roleToSidebar[userRole] ?? [];
+
+  console.log(detectSidebar);
   return (
     <React.Fragment>
       <div
@@ -12,12 +21,12 @@ export const AgencySidebar = () => {
       >
         <span className="w-100 px-3 text-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
           <span className="fs-8 text-center btn btn-primary w-100 text-white">
-            EFCC Abuja
+            {userRole === 'admin' ? 'Admin' : userRole}
           </span>
         </span>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
-          {agencyLinks.map(({ title, url, icon, exact, extraClass }) => {
+          {detectSidebar?.map(({ title, url, icon, exact, extraClass }) => {
             return (
               <li className="nav-item">
                 <NavLink

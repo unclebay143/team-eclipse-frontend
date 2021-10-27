@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DashboardComponentLoader } from '../dashboard-layout/DashboardLoader';
+import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
-export const ManagePetitions = () => {
+export const AgencyManagePetitions = () => {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
@@ -18,10 +18,10 @@ export const ManagePetitions = () => {
   return (
     <React.Fragment>
       <div className="container">
-        <span className="d-flex text-primary align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-          <span className="fs-5 fw-semibold fs-8 text-left btn-sm">
+        <span className="d-flex text-primary align-items-center flex-shrink-0 py-3 link-dark text-decoration-none border-bottom">
+          <h3 className="fw-semibold fs-4 text-left btn-m">
             EFCC Abuja Petitions
-          </span>
+          </h3>
         </span>
         <div className="table-responsive">
           <table className="table table-hover table-bordered">

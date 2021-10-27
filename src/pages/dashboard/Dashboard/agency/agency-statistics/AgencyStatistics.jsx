@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
-export const Statistics = () => {
+export const AgencyStatistics = () => {
   const [loading, setloading] = useState(true);
   useEffect(() => {
     const loadtime = setTimeout(() => {

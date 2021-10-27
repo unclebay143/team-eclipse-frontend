@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DashboardComponentLoader } from '../dashboard-layout/DashboardLoader';
+import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const Mentions = () => {
   const [loading, setloading] = useState(true);

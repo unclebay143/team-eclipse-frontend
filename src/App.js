@@ -6,15 +6,17 @@ import { Login } from './pages/dashboard/auth/Login';
 import { Public } from './pages/public/Public';
 import { Register } from './pages/dashboard/auth/Register';
 import { CreatePassword } from './pages/dashboard/auth/CreatePassword';
-import { Dashboard } from './pages/dashboard/Dashboard/Dashboard';
 import { Success } from './components/utils/Success';
+import { AdminDashboard } from './pages/dashboard/Dashboard/AdminDashboard';
+import { AgencyDashboard } from './pages/dashboard/Dashboard/AgencyDashboard';
 
 function App() {
   return (
     <Router>
       <div className="App bg-light">
         <Switch>
-          <Route path="/agency" component={Dashboard} />
+          <Route path="/admin" component={AdminDashboard} />
+          <Route path="/agency" component={AgencyDashboard} />
           <Route path="/register" component={Register} />
           <Route path="/create_password" component={CreatePassword} />
           <Route path="/login" component={Login} />

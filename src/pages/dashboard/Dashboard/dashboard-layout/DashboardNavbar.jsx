@@ -1,7 +1,7 @@
 import React from 'react';
 import { navbar, dashboardTextColor } from './../dashboard.module.css';
 
-export const AgencyNavbar = () => {
+export const DashboardNavbar = () => {
   return (
     <React.Fragment>
       <nav
