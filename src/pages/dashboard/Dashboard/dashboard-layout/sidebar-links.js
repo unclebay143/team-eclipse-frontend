@@ -21,6 +21,11 @@ export const agencySidebarLinks = [
     icon: 'bi bi-ui-checks-grid',
     url: '/agency/petitions/id',
   },
+  {
+    title: 'Agent Form',
+    icon: 'bi bi-person-plus',
+    url: '/agency/agent_form',
+  },
 ];
 
 export const adminSidebarLinks = [
@@ -37,9 +42,9 @@ export const adminSidebarLinks = [
     exact: true,
   },
   {
-    title: 'New Agency',
-    icon: 'bi bi-person-plus',
-    url: '/admin/agency/new',
+    title: 'Petitions',
+    icon: 'bi bi-ui-checks-grid',
+    url: '/admin/petitions/id',
   },
   {
     title: 'Agencies',
@@ -47,8 +52,18 @@ export const adminSidebarLinks = [
     url: '/admin/agencies',
   },
   {
-    title: 'Petitions',
-    icon: 'bi bi-ui-checks-grid',
-    url: '/admin/petitions/id',
+    title: 'New Agency',
+    icon: 'bi bi-person-plus',
+    url: '/admin/agency/new',
+  },
+  {
+    title: 'New Admn',
+    icon: 'bi bi-people',
+    url: '/admin/new_admin',
+  },
+  {
+    title: 'Hall of Shame',
+    icon: 'bi bi-arrow-up-right',
+    url: '/admin/create_hall_of_shame',
   },
 ];

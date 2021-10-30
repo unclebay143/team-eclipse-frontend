@@ -1,8 +1,8 @@
-import { Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
-export const NewAgencyForm = () => {
+export const HallOfShameForm = () => {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
@@ -53,78 +53,61 @@ export const NewAgencyForm = () => {
           }) => (
             <form className="col-12 col-md-9 col-xl-8 m-auto overflow-auto">
               <div className="pb-1">
-                <h2 className="text-primary h3">Agency Registration Form</h2>
+                <h2 className="text-primary h3">Hall of Shame Form</h2>
                 <div className="form-group mt-4">
-                  <label className="mb-2 text-secondary" htmlFor="agencyName">
-                    Agency Name
+                  <label className="mb-2 text-secondary" htmlFor="fullName">
+                    Full Name
                   </label>
                   <input
                     type="text"
                     className="form-control form-control-lg text-secondary fs-6"
-                    id="agencyName"
+                    id="fullName"
                     placeholder=""
                   />
                 </div>
 
                 <div className="form-group mt-4">
                   <label className="mb-2 text-secondary" htmlFor="email">
-                    Agency Email
+                    Crime
                   </label>
                   <input
                     type="text"
                     className="form-control form-control-lg text-secondary fs-6"
-                    id="email"
+                    id="crime"
                     placeholder=""
-                    name="email"
+                    name="crime"
                   />
                 </div>
+
                 <div className="form-group mt-4">
-                  <label className="mb-2 text-secondary" htmlFor="phoneNumber">
-                    Agency Hotline
+                  <label className="mb-2 text-secondary" htmlFor="consequence">
+                    Consequence
                   </label>
                   <input
                     type="text"
                     className="form-control form-control-lg"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    placeholder=""
-                  />
-                </div>
-                {/* <div className="form-group mt-4">
-                  <label
-                    className="mb-2 text-secondary"
-                    htmlFor="exampleFormControlInput1"
-                  >
-                    Agency Office Address
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    id="exampleFormControlInput1"
+                    id="consequence"
                     placeholder=""
                   />
                 </div>
                 <div className="form-group mt-4">
-                  <label
-                    className="mb-2 text-secondary"
-                    htmlFor="exampleFormControlInput1"
+                  <Field
+                    name="color"
+                    as="select"
+                    className="form-control form-control-lg text-secondary fs-6"
                   >
-                    Password
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    id="exampleFormControlInput1"
-                    placeholder=""
-                  />
-                </div> */}
+                    <option value="red">Male</option>
+                    <option value="green">Female</option>
+                    <option value="blue">Others</option>
+                  </Field>
+                </div>
                 <div className="form-group mt-4">
                   <input type="checkbox" id="confirmation" />{' '}
                   <label
                     className="text custom-primary-color-danger"
                     for="confirmation"
                   >
-                    I have confirmed the agency information above
+                    I have confirmed the details above
                   </label>
                 </div>
                 <div className="form-group mt-4">

@@ -1,12 +1,26 @@
 import { Formik } from 'formik';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './auth-form.module.css';
+import React, { useEffect, useState } from 'react';
+import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
-export const Login = () => {
+export const NewSubAgentForm = () => {
+  const [loading, setloading] = useState(true);
+
+  useEffect(() => {
+    const loadtime = setTimeout(() => {
+      setloading(false);
+    }, 1000);
+    return () => {
+      clearTimeout(loadtime);
+    };
+  }, []);
+
+  if (loading) return <DashboardComponentLoader />;
   return (
     <React.Fragment>
-      <div className={`row pt-5 pb-5 ${styles.formContainer}`}>
+      <div
+        className={`container row w-100 py-5 overflow-auto`}
+        style={{ maxHeight: '80vh' }}
+      >
         <Formik
           initialValues={{ email: '', password: '' }}
           validate={(values) => {
@@ -37,31 +51,34 @@ export const Login = () => {
             isSubmitting,
             /* and other goodies */
           }) => (
-            <form className="d-flex justify-content-center align-items-center col-12 col-md-4 m-auto">
+            <form className="col-12 col-md-9 col-xl-8 m-auto overflow-auto">
               <div className="pb-1">
-                <h2 className={styles.heading}>Agency login portal</h2>
+                <h2 className="text-primary h3">Agent Form</h2>
                 <div className="form-group mt-4">
-                  <p
-                    className="mb- text-secondary"
-                    htmlFor="exampleFormControlInput1"
-                  >
-                    Enter the email you signed up with and we'll send you a
-                    login code. Not an agency?{' '}
-                    <Link to="/register">Create an account.</Link>
-                  </p>
-                  <label
-                    className="mb-2 text-secondary"
-                    htmlFor="exampleFormControlInput1"
-                  >
+                  <label className="mb-2 text-secondary" htmlFor="agencyName">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control form-control-lg text-secondary fs-6"
+                    id="agencyName"
+                    placeholder=""
+                  />
+                </div>
+
+                <div className="form-group mt-4">
+                  <label className="mb-2 text-secondary" htmlFor="email">
                     Email
                   </label>
                   <input
                     type="text"
-                    className="form-control form-control-lg"
-                    id="exampleFormControlInput1"
+                    className="form-control form-control-lg text-secondary fs-6"
+                    id="email"
                     placeholder=""
+                    name="email"
                   />
                 </div>
+
                 <div className="form-group mt-4">
                   <label
                     className="mb-2 text-secondary"
@@ -77,10 +94,33 @@ export const Login = () => {
                   />
                 </div>
                 <div className="form-group mt-4">
+                  <label
+                    className="mb-2 text-secondary"
+                    htmlFor="confirmPassword"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control form-control-lg"
+                    id="confirmPassword"
+                    placeholder=""
+                  />
+                </div>
+                <div className="form-group mt-4">
+                  <input type="checkbox" id="confirmation" />{' '}
+                  <label
+                    className="text custom-primary-color-danger"
+                    for="confirmation"
+                  >
+                    I have confirmed the agency information above
+                  </label>
+                </div>
+                <div className="form-group mt-4">
                   <button
                     className={`form-control form-control-lg btn btn-lg btn-primary  `}
                   >
-                    Login
+                    Register
                   </button>
                 </div>
               </div>

@@ -7,6 +7,7 @@ import { AgencyManagePetitions } from './agency/agency-manage-petitions/AgencyMa
 import { DashboardLoader } from './dashboard-layout/DashboardLoader';
 import { Mentions } from './agency/mentions/Mentions';
 import { AgencyStatistics } from './agency/agency-statistics/AgencyStatistics';
+import { NewSubAgentForm } from './admin/manage-agency/NewSubAgentForm';
 
 export const AgencyDashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ export const AgencyDashboard = () => {
               component={AgencyManagePetitions}
             />
             <Route path="/agency/mentions" component={Mentions} />
+            <Route path="/agency/agent_form" component={NewSubAgentForm} />
             <Route path="/agency" component={AgencyStatistics} />
           </Switch>
         </div>

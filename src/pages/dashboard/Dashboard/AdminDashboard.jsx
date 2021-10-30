@@ -9,6 +9,8 @@ import { AdminStatistics } from './admin/admin-statistics/AdminStatistics';
 import { NewAgencyForm } from './admin/manage-agency/NewAgencyForm';
 import { AgencyList } from './admin/manage-agency/AgencyList';
 import { AdminManagePetitions } from './admin/admin-manage-petitions/AdminManagePetition';
+import { NewAdminForm } from './admin/manage-admin/NewAdminForm';
+import { HallOfShameForm } from './admin/hall-of-shame/HallOfShameForm';
 
 export const AdminDashboard = () => {
   const [pageLoading, setpageLoading] = useState(true);
@@ -25,6 +27,11 @@ export const AdminDashboard = () => {
           <Switch>
             <Route path="/admin/agencies" component={AgencyList} />
             <Route path="/admin/agency/new" component={NewAgencyForm} />
+            <Route path="/admin/new_admin" component={NewAdminForm} />
+            <Route
+              path="/admin/create_hall_of_shame"
+              component={HallOfShameForm}
+            />
             <Route
               path="/admin/petitions/id"
               component={AdminManagePetitions}

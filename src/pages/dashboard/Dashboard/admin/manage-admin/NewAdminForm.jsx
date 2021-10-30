@@ -1,12 +1,26 @@
 import { Formik } from 'formik';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './auth-form.module.css';
+import React, { useEffect, useState } from 'react';
+import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
-export const Register = () => {
+export const NewAdminForm = () => {
+  const [loading, setloading] = useState(true);
+
+  useEffect(() => {
+    const loadtime = setTimeout(() => {
+      setloading(false);
+    }, 1000);
+    return () => {
+      clearTimeout(loadtime);
+    };
+  }, []);
+
+  if (loading) return <DashboardComponentLoader />;
   return (
     <React.Fragment>
-      <div className={`row pt-5 pb-5 ${styles.formContainer}`}>
+      <div
+        className={`container row w-100 py-5 overflow-auto`}
+        style={{ maxHeight: '80vh' }}
+      >
         <Formik
           initialValues={{ email: '', password: '' }}
           validate={(values) => {
@@ -37,44 +51,44 @@ export const Register = () => {
             isSubmitting,
             /* and other goodies */
           }) => (
-            <form className="d-flex justify-content-center align-items-center col-10 col-md-6 col-xl-4 m-auto">
+            <form className="col-12 col-md-9 col-xl-8 m-auto overflow-auto">
               <div className="pb-1">
-                <h2 className={styles.heading}>Agency registration portal</h2>
+                <h2 className="text-primary h3">Admin Registration Form</h2>
                 <div className="form-group mt-4">
-                  <p
-                    className="mb- text-secondary"
-                    htmlFor="exampleFormControlInput1"
-                  >
-                    Enter a valid agency email address with a strong and secure
-                    password. Already have an account?{' '}
-                    <Link to="/login">Login here.</Link>
-                  </p>
-                  <label
-                    className="mb-2 text-secondary"
-                    htmlFor="exampleFormControlInput1"
-                  >
-                    Email
+                  <label className="mb-2 text-secondary" htmlFor="userName">
+                    Admin Username
                   </label>
                   <input
                     type="text"
-                    className="form-control form-control-lg"
-                    id="exampleFormControlInput1"
+                    name="userName"
+                    className="form-control form-control-lg text-secondary fs-6"
+                    id="userName"
                     placeholder=""
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="form-group mt-4">
+                  <label className="mb-2 text-secondary" htmlFor="password">
+                    Admin Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    className="form-control form-control-lg text-secondary fs-6"
+                    id="password"
+                    placeholder=""
+                    autoComplete="off"
                   />
                 </div>
                 <div className="form-group mt-4">
+                  <input type="checkbox" id="confirmation" />{' '}
                   <label
-                    className="mb-2 text-secondary"
-                    htmlFor="exampleFormControlInput1"
+                    className="text custom-primary-color-danger"
+                    for="confirmation"
                   >
-                    Password
+                    Please confirm the admin information above
                   </label>
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    id="exampleFormControlInput1"
-                    placeholder=""
-                  />
                 </div>
                 <div className="form-group mt-4">
                   <button
