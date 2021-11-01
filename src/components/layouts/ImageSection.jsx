@@ -79,7 +79,7 @@ export const ImageSectionCard = ({
       <p className="custom-primary-color">{description}</p>
 
       {/* <p>
-              <a className="btn btn-secondary" href="#">
+              <a className="btn btn-secondary" href="/">
                 View details »
               </a>
             </p> */}

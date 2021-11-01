@@ -41,6 +41,7 @@ export const Carousel = () => {
               width="100%"
               height="100%"
               className={`${styles.carouselImg}`}
+              alt="carousel"
             />
             <div className="container">
               <div
@@ -55,7 +56,7 @@ export const Carousel = () => {
                   <Link
                     to="/new_petition"
                     className={`btn d-inline-flex justify-content-center align-items-center ${universalStyles.bgPrimaryColor}`}
-                    href="#"
+                    href="/"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -79,13 +80,14 @@ export const Carousel = () => {
               width="100%"
               height="100%"
               className={`${styles.carouselImg}`}
+              alt="carousel"
             />
             <div className="container">
               <div className="carousel-caption">
                 <h1>Keep the Nation clear.</h1>
                 <p>Report all unlaw incident to the law.</p>
                 <p>
-                  <a className={`btn ${universalStyles.bgRedColor}`} href="#">
+                  <a className={`btn ${universalStyles.bgRedColor}`} href="/">
                     Learn more
                   </a>
                 </p>
@@ -98,6 +100,7 @@ export const Carousel = () => {
               width="100%"
               height="100%"
               className={`${styles.carouselImg}`}
+              alt="carousel"
             />
             <div className="container">
               <div className="carousel-caption text-end">

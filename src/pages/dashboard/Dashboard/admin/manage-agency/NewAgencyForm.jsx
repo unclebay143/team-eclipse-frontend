@@ -1,5 +1,7 @@
-import { Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
+import Loader from 'react-loader-spinner';
+import { AgencyRegistrationSchema } from '../../../../../components/helper/yupFormValidation';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const NewAgencyForm = () => {
@@ -22,18 +24,13 @@ export const NewAgencyForm = () => {
         style={{ maxHeight: '80vh' }}
       >
         <Formik
-          initialValues={{ email: '', password: '' }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = 'Required';
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = 'Invalid email address';
-            }
-            return errors;
+          initialValues={{
+            agencyName: '',
+            email: '',
+            phoneNumber: '',
+            confirmation: false,
           }}
+          validationSchema={AgencyRegistrationSchema}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
@@ -51,7 +48,10 @@ export const NewAgencyForm = () => {
             isSubmitting,
             /* and other goodies */
           }) => (
-            <form className="col-12 col-md-9 col-xl-8 m-auto overflow-auto">
+            <form
+              onSubmit={handleSubmit}
+              className="col-12 col-md-9 col-xl-8 m-auto overflow-auto"
+            >
               <div className="pb-1">
                 <h2 className="text-primary h3">Agency Registration Form</h2>
                 <div className="form-group mt-4">
@@ -62,8 +62,12 @@ export const NewAgencyForm = () => {
                     type="text"
                     className="form-control form-control-lg text-secondary fs-6"
                     id="agencyName"
-                    placeholder=""
+                    name="agencyName"
+                    onChange={handleChange}
                   />
+                  {touched.agencyName && errors.agencyName ? (
+                    <div className="text-danger small">{errors.agencyName}</div>
+                  ) : null}
                 </div>
 
                 <div className="form-group mt-4">
@@ -71,24 +75,32 @@ export const NewAgencyForm = () => {
                     Agency Email
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     className="form-control form-control-lg text-secondary fs-6"
                     id="email"
-                    placeholder=""
                     name="email"
+                    onChange={handleChange}
                   />
+                  {touched.email && errors.email ? (
+                    <div className="text-danger small">{errors.email}</div>
+                  ) : null}
                 </div>
                 <div className="form-group mt-4">
                   <label className="mb-2 text-secondary" htmlFor="phoneNumber">
-                    Agency Hotline
+                    Agency Phone Number
                   </label>
                   <input
                     type="text"
-                    className="form-control form-control-lg"
+                    className="form-control form-control-lg text-secondary fs-6"
                     id="phoneNumber"
                     name="phoneNumber"
-                    placeholder=""
+                    onChange={handleChange}
                   />
+                  {touched.phoneNumber && errors.phoneNumber ? (
+                    <div className="text-danger small">
+                      {errors.phoneNumber}
+                    </div>
+                  ) : null}
                 </div>
                 {/* <div className="form-group mt-4">
                   <label
@@ -119,19 +131,42 @@ export const NewAgencyForm = () => {
                   />
                 </div> */}
                 <div className="form-group mt-4">
-                  <input type="checkbox" id="confirmation" />{' '}
+                  <Field
+                    type="checkbox"
+                    id="confirmation"
+                    name="confirmation"
+                  />{' '}
                   <label
                     className="text custom-primary-color-danger"
                     for="confirmation"
                   >
                     I have confirmed the agency information above
                   </label>
+                  {touched.confirmation && errors.confirmation ? (
+                    <div className="text-danger small">
+                      {errors.confirmation}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="form-group mt-4">
                   <button
+                    disabled={isSubmitting}
                     className={`form-control form-control-lg btn btn-lg btn-primary  `}
                   >
-                    Register
+                    {isSubmitting ? (
+                      <React.Fragment>
+                        Please wait...{' '}
+                        <Loader
+                          type="TailSpin"
+                          color="#fff"
+                          height={20}
+                          width={20}
+                          style={{ display: 'inline-block' }}
+                        />
+                      </React.Fragment>
+                    ) : (
+                      'Register'
+                    )}
                   </button>
                 </div>
               </div>

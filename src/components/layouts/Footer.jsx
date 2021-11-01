@@ -10,7 +10,7 @@ export const Footer = () => {
       >
         <div className="container">
           <p className="float-end mb-1">
-            <a href="#" className="text-white">
+            <a href="/" className="text-white">
               Back to top
             </a>
           </p>

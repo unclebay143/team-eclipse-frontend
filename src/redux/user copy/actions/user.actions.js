@@ -1,6 +1,17 @@
-export const REGISTER_NEW_ADMIN = 'REGISTER_NEW_ADMIN';
-export const AdminRegister =
-  ({ email, password }, { setSubmitting }) =>
+import {
+  CLEAR_SCREEN_MESSAGE,
+  LOGIN_SUCCESSFULL,
+  PLAYER_GAME_RECORD_LOADED,
+  REGISTRATION_SUCCESSFUL,
+  SET_SCREEN_MESSAGE,
+  USER_LOADED,
+  LOGOUT,
+} from "../../types";
+import UserService from "../service/user.services";
+
+// Registration
+export const register =
+  ({ username, email, password }, { setSubmitting }) =>
   (dispatch) => {
     UserService.registerNewPlayer(username, email, password)
       .then((response) => {
@@ -11,7 +22,7 @@ export const AdminRegister =
             type: SET_SCREEN_MESSAGE,
             payload: {
               message: response.data.message,
-              type: 'danger',
+              type: "danger",
             },
           });
           setSubmitting(false);
@@ -22,7 +33,7 @@ export const AdminRegister =
             type: REGISTRATION_SUCCESSFUL,
           });
           setSubmitting(false);
-          window.location.assign('/#/welcome');
+          window.location.assign("/#/welcome");
         }
       })
       .catch((error) => {
@@ -47,7 +58,7 @@ export const login =
           type: SET_SCREEN_MESSAGE,
           payload: {
             message: response.data.message,
-            type: 'danger',
+            type: "danger",
           },
         });
         setSubmitting(false);
@@ -69,10 +80,10 @@ export const login =
         setSubmitting(false);
 
         // Store jwt to localstorage
-        localStorage.setItem('jwt-token', response.data.token);
+        localStorage.setItem("jwt-token", response.data.token);
 
         // Redirect user to dashboard
-        window.location.assign('/#/dashboard');
+        window.location.assign("/#/dashboard");
       }
     } catch (error) {
       dispatch({
@@ -138,8 +149,8 @@ export const logOut = () => (dispatch) => {
   });
 
   // remove token from local-storage
-  localStorage.removeItem('jwt-token');
+  localStorage.removeItem("jwt-token");
 
   // Redirect user to landing page
-  window.location.assign('/#/');
+  window.location.assign("/#/");
 };

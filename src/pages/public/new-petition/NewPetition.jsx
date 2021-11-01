@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import styles from './new-petition.module.css';
 import { NewPetitionSchema } from '../../../components/helper/yupFormValidation';
 import { createPetition } from '../../../redux/petition/actions/petition.actions';
@@ -18,6 +18,7 @@ export const NewPetition = () => {
             description2: '',
             document: '',
             preferredAgency: '',
+            confirmation: false,
           }}
           onSubmit={(values, { setSubmitting }) => {
             dispatch(createPetition(values, setSubmitting));
@@ -33,8 +34,6 @@ export const NewPetition = () => {
             isSubmitting,
           }) => (
             <form onSubmit={handleSubmit}>
-              <pre>{JSON.stringify(values, null, 4)}</pre>
-              <pre>{JSON.stringify(errors, null, 4)}</pre>
               <section className="section-1">
                 <div className="text-center pb-1 w-lg-50 m-auto">
                   <h2 className="custom-primary-color">SECTION A</h2>
@@ -74,7 +73,7 @@ export const NewPetition = () => {
                     Select preferred agency (optional)
                   </label>
                   <select
-                    className="form-control ustom-select"
+                    className="form-control"
                     id="preferredAgency"
                     onChange={handleChange}
                   >
@@ -191,15 +190,17 @@ export const NewPetition = () => {
                 </div>
               </section>
               <div className="form-group mt-4">
-                <input type="checkbox" id="confirmation" />{' '}
+                <Field type="checkbox" id="confirmation" name="confirmation" />{' '}
                 <label
-                  onChange={handleChange}
                   className="text custom-primary-color-danger"
                   for="confirmation"
                 >
-                  I confirm the information above are true to the best of my
-                  knownledge
+                  I confirm that the information above are true to the best of
+                  my knownledge
                 </label>
+                {touched.confirmation && errors.confirmation ? (
+                  <div className="text-danger small">{errors.confirmation}</div>
+                ) : null}
               </div>
               <div className="form-group mt-4">
                 <button className="btn btn-danger" disabled={isSubmitting}>

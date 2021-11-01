@@ -1,5 +1,7 @@
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import React, { useEffect, useState } from 'react';
+import Loader from 'react-loader-spinner';
+import { AdminRegistrationSchema } from '../../../../../components/helper/yupFormValidation';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const NewAdminForm = () => {
@@ -22,18 +24,8 @@ export const NewAdminForm = () => {
         style={{ maxHeight: '80vh' }}
       >
         <Formik
-          initialValues={{ email: '', password: '' }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = 'Required';
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = 'Invalid email address';
-            }
-            return errors;
-          }}
+          initialValues={{ userName: '', password: '', confirmation: false }}
+          validationSchema={AdminRegistrationSchema}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
@@ -42,16 +34,17 @@ export const NewAdminForm = () => {
           }}
         >
           {({
-            values,
             errors,
             touched,
-            handleChange,
-            handleBlur,
             handleSubmit,
             isSubmitting,
-            /* and other goodies */
+            values,
+            handleChange,
           }) => (
-            <form className="col-12 col-md-9 col-xl-8 m-auto overflow-auto">
+            <form
+              onSubmit={handleSubmit}
+              className="col-12 col-md-9 col-xl-8 m-auto overflow-auto"
+            >
               <div className="pb-1">
                 <h2 className="text-primary h3">Admin Registration Form</h2>
                 <div className="form-group mt-4">
@@ -63,9 +56,12 @@ export const NewAdminForm = () => {
                     name="userName"
                     className="form-control form-control-lg text-secondary fs-6"
                     id="userName"
-                    placeholder=""
                     autoComplete="off"
+                    onChange={handleChange}
                   />
+                  {touched.userName && errors.userName ? (
+                    <div className="text-danger small">{errors.userName}</div>
+                  ) : null}
                 </div>
 
                 <div className="form-group mt-4">
@@ -77,24 +73,50 @@ export const NewAdminForm = () => {
                     name="password"
                     className="form-control form-control-lg text-secondary fs-6"
                     id="password"
-                    placeholder=""
                     autoComplete="off"
+                    onChange={handleChange}
                   />
+                  {touched.password && errors.password ? (
+                    <div className="text-danger small">{errors.password}</div>
+                  ) : null}
                 </div>
                 <div className="form-group mt-4">
-                  <input type="checkbox" id="confirmation" />{' '}
+                  <Field
+                    type="checkbox"
+                    id="confirmation"
+                    name="confirmation"
+                  />{' '}
                   <label
                     className="text custom-primary-color-danger"
-                    for="confirmation"
+                    htmlFor="confirmation"
                   >
-                    Please confirm the admin information above
+                    Please confirm the admin information above.
                   </label>
+                  {touched.confirmation && errors.confirmation ? (
+                    <div className="text-danger small">
+                      {errors.confirmation}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="form-group mt-4">
                   <button
+                    disabled={isSubmitting}
                     className={`form-control form-control-lg btn btn-lg btn-primary  `}
                   >
-                    Register
+                    {isSubmitting ? (
+                      <React.Fragment>
+                        Please wait...{' '}
+                        <Loader
+                          type="TailSpin"
+                          color="#fff"
+                          height={20}
+                          width={20}
+                          style={{ display: 'inline-block' }}
+                        />
+                      </React.Fragment>
+                    ) : (
+                      'Register'
+                    )}
                   </button>
                 </div>
               </div>

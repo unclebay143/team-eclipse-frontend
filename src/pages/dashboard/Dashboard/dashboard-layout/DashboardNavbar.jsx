@@ -11,7 +11,7 @@ export const DashboardNavbar = () => {
         <div className="container-fluid">
           <a
             className="navbar-brand text-dark d-flex align-items-center"
-            href="#"
+            href="/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ export const DashboardNavbar = () => {
                 <a
                   className={`nav-link active ${dashboardTextColor}`}
                   aria-current="page"
-                  href="#"
+                  href="/"
                 >
                   Home
                 </a>
@@ -53,7 +53,7 @@ export const DashboardNavbar = () => {
               <li className="nav-item">
                 <a
                   className={`nav-link text-primary ${dashboardTextColor}`}
-                  href="#"
+                  href="/"
                 >
                   Settings
                 </a>
@@ -61,22 +61,22 @@ export const DashboardNavbar = () => {
 
               {/* view on mobile only */}
               <li className="nav-item d-lg-none">
-                <a className={`nav-link ${dashboardTextColor}`} href="#">
+                <a className={`nav-link ${dashboardTextColor}`} href="/">
                   Dashboard
                 </a>
               </li>
               <li className="nav-item d-lg-none">
-                <a className={`nav-link ${dashboardTextColor}`} href="#">
+                <a className={`nav-link ${dashboardTextColor}`} href="/">
                   Mentions
                 </a>
               </li>
               <li className="nav-item d-lg-none">
-                <a className={`nav-link ${dashboardTextColor}`} href="#">
+                <a className={`nav-link ${dashboardTextColor}`} href="/">
                   Petitions
                 </a>
               </li>
               <li className="nav-item d-lg-none">
-                <a className={`nav-link ${dashboardTextColor}`} href="#">
+                <a className={`nav-link ${dashboardTextColor}`} href="/">
                   Logout
                 </a>
               </li>

@@ -1,5 +1,7 @@
 import { Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
+import Loader from 'react-loader-spinner';
+import { AgentSignupSchema } from '../../../../../components/helper/yupFormValidation';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const NewSubAgentForm = () => {
@@ -22,18 +24,14 @@ export const NewSubAgentForm = () => {
         style={{ maxHeight: '80vh' }}
       >
         <Formik
-          initialValues={{ email: '', password: '' }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = 'Required';
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = 'Invalid email address';
-            }
-            return errors;
+          initialValues={{
+            agencyName: '',
+            password: '',
+            confirmPassword: '',
+            email: '',
+            confirmation: false,
           }}
+          validationSchema={AgentSignupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
@@ -49,49 +47,58 @@ export const NewSubAgentForm = () => {
             handleBlur,
             handleSubmit,
             isSubmitting,
-            /* and other goodies */
           }) => (
-            <form className="col-12 col-md-9 col-xl-8 m-auto overflow-auto">
+            <form
+              onSubmit={handleSubmit}
+              className="col-12 col-md-9 col-xl-8 m-auto overflow-auto"
+            >
               <div className="pb-1">
                 <h2 className="text-primary h3">Agent Form</h2>
                 <div className="form-group mt-4">
                   <label className="mb-2 text-secondary" htmlFor="agencyName">
-                    Name
+                    Agency Name
                   </label>
                   <input
                     type="text"
                     className="form-control form-control-lg text-secondary fs-6"
                     id="agencyName"
-                    placeholder=""
+                    onChange={handleChange}
                   />
+                  {touched.agencyName && errors.agencyName ? (
+                    <div className="text-danger small">{errors.agencyName}</div>
+                  ) : null}
                 </div>
 
                 <div className="form-group mt-4">
                   <label className="mb-2 text-secondary" htmlFor="email">
-                    Email
+                    Agency Email
                   </label>
                   <input
                     type="text"
                     className="form-control form-control-lg text-secondary fs-6"
                     id="email"
-                    placeholder=""
                     name="email"
+                    onChange={handleChange}
                   />
+                  {touched.email && errors.email ? (
+                    <div className="text-danger small">{errors.email}</div>
+                  ) : null}
                 </div>
 
                 <div className="form-group mt-4">
-                  <label
-                    className="mb-2 text-secondary"
-                    htmlFor="exampleFormControlInput1"
-                  >
+                  <label className="mb-2 text-secondary" htmlFor="password">
                     Password
                   </label>
                   <input
                     type="text"
-                    className="form-control form-control-lg"
-                    id="exampleFormControlInput1"
-                    placeholder=""
+                    className="form-control form-control-lg text-secondary fs-6"
+                    id="password"
+                    name="password"
+                    onChange={handleChange}
                   />
+                  {touched.password && errors.password ? (
+                    <div className="text-danger small">{errors.password}</div>
+                  ) : null}
                 </div>
                 <div className="form-group mt-4">
                   <label
@@ -102,25 +109,54 @@ export const NewSubAgentForm = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control form-control-lg"
+                    className="form-control form-control-lg text-secondary fs-6"
                     id="confirmPassword"
-                    placeholder=""
+                    name="confirmPassword"
+                    onChange={handleChange}
                   />
+                  {touched.confirmPassword && errors.confirmPassword ? (
+                    <div className="text-danger small">
+                      {errors.confirmPassword}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="form-group mt-4">
-                  <input type="checkbox" id="confirmation" />{' '}
+                  <input
+                    type="checkbox"
+                    id="confirmation"
+                    name="confirmation"
+                    onChange={handleChange}
+                  />{' '}
                   <label
                     className="text custom-primary-color-danger"
-                    for="confirmation"
+                    htmlFor="confirmation"
                   >
                     I have confirmed the agency information above
                   </label>
+                  {touched.confirmation && errors.confirmation ? (
+                    <div className="text-danger small">
+                      {errors.confirmation}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="form-group mt-4">
                   <button
                     className={`form-control form-control-lg btn btn-lg btn-primary  `}
                   >
-                    Register
+                    {isSubmitting ? (
+                      <React.Fragment>
+                        Please wait...{' '}
+                        <Loader
+                          type="TailSpin"
+                          color="#fff"
+                          height={20}
+                          width={20}
+                          style={{ display: 'inline-block' }}
+                        />
+                      </React.Fragment>
+                    ) : (
+                      'Register'
+                    )}
                   </button>
                 </div>
               </div>

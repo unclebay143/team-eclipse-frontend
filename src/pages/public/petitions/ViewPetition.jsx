@@ -55,7 +55,7 @@ export const ViewPetition = () => {
           </strong>
           <div className="py-2">
             <Link
-              to="/login"
+              to="/agency_login"
               className={`btn btn-sm text-white ${universalStyles.bgPrimaryColor}`}
             >
               Login as Agency

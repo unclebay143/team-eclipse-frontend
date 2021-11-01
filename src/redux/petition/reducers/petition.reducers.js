@@ -1,6 +1,12 @@
-import { GET_ALL_PETITIONS } from '../actions/petition.actions';
+import {
+  CREATE_PETITION,
+  GET_ALL_PETITIONS,
+  UPDATE_PETITION_STATUS,
+} from '../actions/petition.actions';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  petitions: [],
+};
 
 // redux reducer function
 const petitionReducer = (state = INITIAL_STATE, action) => {
@@ -15,12 +21,12 @@ const petitionReducer = (state = INITIAL_STATE, action) => {
     case CREATE_PETITION:
       return {
         ...state,
-        petitions: petitions.concat(payload),
+        petitions: state.petitions.concat(payload),
       };
     case UPDATE_PETITION_STATUS:
       return {
         ...state,
-        petitions: petitions.map((petition) =>
+        petitions: state.petitions.map((petition) =>
           petition.id === payload.id ? payload : petition
         ),
       };

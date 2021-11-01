@@ -6,10 +6,13 @@ import { Accordion } from '../../../components/layouts/Accordion';
 import { Notice } from '../../../components/layouts/Notice';
 import { ImageSection } from '../../../components/layouts/ImageSection';
 import axios from 'axios';
+import { getAllPetitions } from '../../../redux/petition/actions/petition.actions';
+import { useDispatch } from 'react-redux';
 
 export const Home = () => {
   const [sucessStories, setsucessStories] = useState([]);
   const [hallOfShame, setHallOfShame] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async (url) => {
@@ -22,6 +25,8 @@ export const Home = () => {
       setHallOfShame(data.slice(0, 3));
       setsucessStories(data.slice(0, 3));
     });
+
+    // dispatch(getAllPetitions());
   }, []);
   return (
     <React.Fragment>

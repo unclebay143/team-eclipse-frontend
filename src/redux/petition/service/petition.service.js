@@ -1,6 +1,7 @@
 // React
 import axios from 'axios';
 import axiosInstance from '../../../axios';
+import { BASE_URL } from '../../user/service/root-endpoints';
 import {
   FETCH_PETITIONS_URL,
   CREATE_PETITION_URL,
@@ -10,7 +11,7 @@ import {
 
 const fetchAllPetitions = async () => {
   try {
-    const res = await axios.get(FETCH_PETITIONS_URL);
+    const res = await axios.get(BASE_URL + FETCH_PETITIONS_URL);
     return res;
   } catch (error) {
     return error;
@@ -18,12 +19,8 @@ const fetchAllPetitions = async () => {
 };
 
 const addPetition = async (formValues) => {
-  const payload = {
-    formValues,
-  };
-
   try {
-    const res = await axios.post(CREATE_PETITION_URL, payload);
+    const res = await axios.post(BASE_URL + CREATE_PETITION_URL, formValues);
     return res;
   } catch (error) {
     return error;
