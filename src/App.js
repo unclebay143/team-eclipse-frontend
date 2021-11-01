@@ -1,31 +1,34 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { Layout } from './components/layouts/Layout';
-import { Home } from './pages/home/Home';
-import { ViewPetition } from './pages/petitions/ViewPetition';
-import { Petitions } from './pages/petitions/Petitions';
-import { NewPetition } from './pages/new-petition/NewPetition';
+import { AgencyLogin } from './pages/dashboard/auth/AgencyLogin';
+import { Public } from './pages/public/Public';
+import { AdminLogin } from './pages/dashboard/auth/AdminLogin';
+import { CreatePassword } from './pages/dashboard/auth/CreatePassword';
 import { Success } from './components/utils/Success';
-import { TrackPetition } from './pages/track-petition/TrackPetition';
+import { AdminDashboard } from './pages/dashboard/Dashboard/AdminDashboard';
+import { AgencyDashboard } from './pages/dashboard/Dashboard/AgencyDashboard';
 
 function App() {
   return (
-    <Router>
-      <div className="App bg-light">
-        <Layout>
+    <Provider store={store}>
+      <Router>
+        <div className="App bg-light">
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/petition/id" component={ViewPetition} />
-            <Route path="/petitions" component={Petitions} />
-            <Route path="/new_petition" component={NewPetition} />
+            <Route path="/admin" component={AdminDashboard} />
+            <Route path="/agency" component={AgencyDashboard} />
+            <Route path="/admin_login" component={AdminLogin} />
+            <Route path="/create_password" component={CreatePassword} />
+            <Route path="/agency_login" component={AgencyLogin} />
             <Route path="/success" component={Success} />
-            <Route path="/track_petition" component={TrackPetition} />
+            <Route path="/" component={Public} />
           </Switch>
-        </Layout>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
