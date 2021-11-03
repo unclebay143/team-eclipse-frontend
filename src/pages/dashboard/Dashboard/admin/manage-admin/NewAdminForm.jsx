@@ -1,7 +1,7 @@
 import { Formik, Field } from 'formik';
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
-import { AdminRegistrationSchema } from '../../../../../components/helper/yupFormValidation';
+import { AdminRegistrationSchema } from '../../../../../components/helper/validation/yupFormValidation';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const NewAdminForm = () => {

@@ -11,23 +11,29 @@ import { useDispatch } from 'react-redux';
 
 export const Home = () => {
   const [sucessStories, setsucessStories] = useState([]);
-  const [hallOfShame, setHallOfShame] = useState([]);
+  const [hallOfShame, setHallOfShame] = useState([
+    {
+      gender: 'male',
+      title: 'something',
+      description: 'this this this',
+    },
+    {
+      gender: 'male',
+      title: 'something',
+      description: 'this this this',
+    },
+    {
+      gender: 'male',
+      title: 'something',
+      description: 'this this this',
+    },
+  ]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async (url) => {
-      const response = await axios.get(url);
-      return response;
-    };
-    // const endpoint = 'https://randomuser.me/api/';
-    const endpoint = 'https://jsonplaceholder.typicode.com/photos';
-    fetchData(endpoint).then(({ data }) => {
-      setHallOfShame(data.slice(0, 3));
-      setsucessStories(data.slice(0, 3));
-    });
-
-    // dispatch(getAllPetitions());
+    dispatch(getAllPetitions());
   }, []);
+
   return (
     <React.Fragment>
       <NewsLetter />

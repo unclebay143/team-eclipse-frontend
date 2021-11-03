@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import React from 'react';
-import { AdminLoginSchema } from '../../../components/helper/yupFormValidation';
+import { AdminLoginSchema } from '../../../components/helper/validation/yupFormValidation';
 import styles from './auth-form.module.css';
 
 export const AdminLogin = () => {

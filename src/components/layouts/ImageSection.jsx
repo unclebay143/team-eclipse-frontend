@@ -15,6 +15,7 @@ export const ImageSection = ({ heading, headingcenter, data, squareImage }) => {
           {data?.map(({ url: imgSrc, title, description }) => {
             return (
               <ImageSectionCard
+                key={title}
                 imgSrc={imgSrc}
                 title={title}
                 description={description}
@@ -36,7 +37,6 @@ export const ImageSectionCard = ({
 }) => {
   const imagePlaceholder = (
     <svg
-      className="bd-placeholder-img rounded-circle"
       className={`bd-placeholder-img ${squareImage || 'rounded-circle'}`}
       width={140}
       height={140}
@@ -61,21 +61,17 @@ export const ImageSectionCard = ({
   const sex = ['men', 'women'];
   return (
     <div className="col-lg-4 text-center ">
-      {imgSrc ? (
+      {!imgSrc ? (
         <img
           // src={imgSrc}
-          src={`https://randomuser.me/api/portraits/${sex[gender]}/${imgNumber}.jpg`}
+          // src={`https://randomuser.me/api/portraits/${sex[gender]}/${imgNumber}.jpg`}
+          src={`    https://avatars.dicebear.com/api/identicon/${sex[gender]}.svg`}
           className={`img-fluid ${squareImage || 'rounded-circle'} w-75`}
         />
       ) : (
         imagePlaceholder
       )}
-      <h5 className="pt-4 pb-2 custom-primary-color">
-        {title}
-        {title}
-        {title}
-        {title}
-      </h5>
+      <h5 className="pt-4 pb-2 custom-primary-color">{title}</h5>
       <p className="custom-primary-color">{description}</p>
 
       {/* <p>

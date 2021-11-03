@@ -2,29 +2,19 @@ import { Formik } from 'formik';
 import React from 'react';
 import styles from './track-petition.module.css';
 import universalStyles from './../../../components/styles/universal.module.css';
+import { useDispatch } from 'react-redux';
+import { getPetitionStatus } from '../../../redux/petition/actions/petition.actions';
 
 export const TrackPetition = () => {
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
       <div className={`container mt-5 ${styles.petitionFormContainer}`}>
         <Formik
-          initialValues={{ email: '', password: '' }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = 'Required';
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = 'Invalid email address';
-            }
-            return errors;
-          }}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
+          initialValues={{ petitionId: '' }}
+          // validate={}
+          onSubmit={(values) => {
+            dispatch(getPetitionStatus(values.petitionId));
           }}
         >
           {({
@@ -37,24 +27,25 @@ export const TrackPetition = () => {
             isSubmitting,
             /* and other goodies */
           }) => (
-            <form>
-              <section className="section-1">
+            <form onSubmit={handleSubmit}>
+              <section className="section-1 col-12 col-lg-6 m-auto">
                 <div className="text-center pb-1 w-lg-50 m-auto">
                   <h2>PETITION TRACKER</h2>
                   <div className="form-group mt-4">
-                    <label className="mb-2" htmlFor="exampleFormControlInput1">
+                    <label className="mb-2" htmlFor="petitionId">
                       Enter Reference ID
                     </label>
                     <input
                       type="text"
-                      className="form-control w-50 m-auto"
-                      id="exampleFormControlInput1"
-                      placeholder=""
+                      className="form-control m-auto"
+                      id="petitionId"
+                      name="petitionId"
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="form-group mt-2">
                     <button
-                      className={`form-control btn btn-primary w-50 m-auto ${universalStyles.bgPrimaryColor}`}
+                      className={`form-control btn btn-primary m-auto ${universalStyles.bgPrimaryColor}`}
                     >
                       Submit
                     </button>

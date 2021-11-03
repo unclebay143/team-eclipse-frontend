@@ -23,7 +23,8 @@ export const PageLoader = ({ setLoading }) => {
     <React.Fragment>
       <section className={styles.loader}>
         {/* <Loader type='Puff' color='#00BFFF' height={100} width={100} /> */}
-        <Loader type="BallTriangle" color="#0091ff" height={100} width={100} />
+        {/* <Loader type="BallTriangle" color="#0091ff" height={100} width={100} /> */}
+        <Loader type="BallTriangle" color="#12326b" height={100} width={100} />
       </section>
     </React.Fragment>
   );

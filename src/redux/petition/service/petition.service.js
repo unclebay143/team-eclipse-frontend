@@ -6,7 +6,7 @@ import {
   FETCH_PETITIONS_URL,
   CREATE_PETITION_URL,
   UPDATE_PETITION_STATUS_URL,
-  FETCH_PETITION_BY_ID_URL,
+  PETITION_PUBLIC_STATUS_URL,
 } from './petition.endpoint';
 
 const fetchAllPetitions = async () => {
@@ -18,18 +18,34 @@ const fetchAllPetitions = async () => {
   }
 };
 
-const addPetition = async (formValues) => {
+const addPetition = async ({
+  title,
+  type,
+  description1,
+  description2,
+  preferredAgency,
+  supportingDocuments,
+}) => {
+  const payload = {
+    title,
+    type,
+    description1,
+    description2,
+    preferredAgency,
+    supportingDocuments,
+  };
   try {
-    const res = await axios.post(BASE_URL + CREATE_PETITION_URL, formValues);
+    const res = await axios.post(BASE_URL + CREATE_PETITION_URL, payload);
     return res;
   } catch (error) {
     return error;
   }
 };
 
-const fetchPetitionByID = async (id) => {
+const fetchPetitionStatus = async (id) => {
   try {
-    const res = await axios.get(FETCH_PETITION_BY_ID_URL);
+    console.log(id);
+    const res = await axios.get(BASE_URL + PETITION_PUBLIC_STATUS_URL + id);
     return res;
   } catch (error) {
     return error;
@@ -51,7 +67,7 @@ const PetitionService = {
   addPetition,
   fetchAllPetitions,
   updatePetitionStatus,
-  fetchPetitionByID,
+  fetchPetitionStatus,
 };
 
 export default PetitionService;

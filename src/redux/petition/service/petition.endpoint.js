@@ -1,4 +1,4 @@
-export const FETCH_PETITIONS_URL = '/find';
-export const CREATE_PETITION_URL = '/reports/new';
+export const FETCH_PETITIONS_URL = '/reports/all';
+export const CREATE_PETITION_URL = '/reports/new-report';
 export const UPDATE_PETITION_STATUS_URL = '';
-export const FETCH_PETITION_BY_ID_URL = '';
+export const PETITION_PUBLIC_STATUS_URL = '/reports/find/';
