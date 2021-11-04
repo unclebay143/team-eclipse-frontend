@@ -1,0 +1,13 @@
+.customNotificationBar {
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+  box-shadow: 0 0 3px #ccc;
+  padding: 0.8rem 0.8rem 0rem 0.8rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}

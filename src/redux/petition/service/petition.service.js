@@ -44,7 +44,6 @@ const addPetition = async ({
 
 const fetchPetitionStatus = async (id) => {
   try {
-    console.log(id);
     const res = await axios.get(BASE_URL + PETITION_PUBLIC_STATUS_URL + id);
     return res;
   } catch (error) {

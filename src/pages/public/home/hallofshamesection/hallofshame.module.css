@@ -1,0 +1,19 @@
+.hallOfShameBgImage {
+  height: 200px;
+  background-position: center;
+  background-image: url('https://cdn.corporatefinanceinstitute.com/assets/white-collar-crime.jpeg');
+  margin-bottom: 5rem;
+  border-radius: 5px;
+  /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url('https://cdn.corporatefinanceinstitute.com/assets/white-collar-crime.jpeg'); */
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url('./white-collar-crime.webp');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 900px) {
+  .hallOfShameBgImage {
+    height: 500px;
+  }
+}

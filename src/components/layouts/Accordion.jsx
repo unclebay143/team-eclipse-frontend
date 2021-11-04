@@ -27,7 +27,7 @@ export const Accordion = ({ heading, headingcenter }) => {
                 aria-expanded="false"
                 aria-controls="collapseOne"
               >
-                1. Collapsible Group Item
+                1. How many case can I report per day
               </div>
             </h5>
           </div>
@@ -38,16 +38,7 @@ export const Accordion = ({ heading, headingcenter }) => {
             data-parent="#accordionExample"
           >
             <div className="card-body custom-primary-color">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+              You can report as many valid case as you want.
             </div>
           </div>
         </div>
@@ -65,7 +56,7 @@ export const Accordion = ({ heading, headingcenter }) => {
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                2. Collapsible Group Item
+                2. Am I safe for reporting?
               </div>
             </h5>
           </div>
@@ -76,16 +67,7 @@ export const Accordion = ({ heading, headingcenter }) => {
             data-parent="#accordionExample"
           >
             <div className="card-body custom-primary-color">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+              You are reporting anonymously on this platform.
             </div>
           </div>
         </div>
@@ -103,7 +85,7 @@ export const Accordion = ({ heading, headingcenter }) => {
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-                3. Collapsible Group Item
+                3. Will something happen after reporting my case?
               </div>
             </h5>
           </div>
@@ -114,16 +96,8 @@ export const Accordion = ({ heading, headingcenter }) => {
             data-parent="#accordionExample"
           >
             <div className="card-body custom-primary-color">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+              There are over 20 Anti-fraud registered agency on our platform,
+              all agency cannot ignore your case if it is really genuie.
             </div>
           </div>
         </div>

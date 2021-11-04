@@ -47,11 +47,16 @@ export const Carousel = () => {
               <div
                 className={`carousel-caption text-center ${styles.carouselCaption}`}
               >
-                <h1>Whistle Blower.</h1>
-                <p>
+                <h1>Whistle Hub.</h1>
+                <p className="w-75 m-auto mb-3">
+                  A centralized platform for all fraud cases in Nigeria,
+                  connecting whistle blower to the right agencies, and giving
+                  the public the power to track along
+                </p>
+                {/* <p>
                   You have the right to report any unlawful cases and incidents
                   in your workspace and the general public.
-                </p>
+                </p> */}
                 <p className="">
                   <Link
                     to="/new_petition"

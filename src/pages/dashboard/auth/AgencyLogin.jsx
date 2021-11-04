@@ -1,10 +1,23 @@
 import { Formik } from 'formik';
-import React from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { AgencyLoginSchema } from '../../../components/helper/validation/yupFormValidation';
+import { agencyLogin } from '../../../redux/agency/actions/agency.actions';
 import styles from './auth-form.module.css';
 
 export const AgencyLogin = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    const isAgencyToken = localStorage.getItem('jwt_agency');
+    // if (isAgencyToken) {
+    //   history.push('/agency');
+    // } else {
+    //   history.push('/agency_login');
+    // }
+  }, []);
   return (
     <React.Fragment>
       <div className={`container-fluid row pt-5 pb-5 ${styles.formContainer}`}>
@@ -12,10 +25,16 @@ export const AgencyLogin = () => {
           initialValues={{ email: '', password: '' }}
           validationSchema={AgencyLoginSchema}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
+            dispatch(agencyLogin(values))
+              .then((response) => {
+                console.log(response);
+                history.push('/agency');
+                setSubmitting(false);
+              })
+              .catch((error) => {
+                setSubmitting(false);
+                console.log(error);
+              });
           }}
         >
           {({ errors, touched, handleChange, handleSubmit, isSubmitting }) => (

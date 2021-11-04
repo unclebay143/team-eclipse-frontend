@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import { Notification } from '../layouts/notification/Notification';
 
 export const Success = () => {
   const { newPetitionStatus } = useSelector((state) => state.petitions);
@@ -11,6 +12,7 @@ export const Success = () => {
   if (!petitionId) {
     history.push('/new_petition');
   }
+
   return (
     <React.Fragment>
       <div className="p-5 mt-5 text-center bg-white">
@@ -28,6 +30,11 @@ export const Success = () => {
           Go back <Link to="/">Home</Link>
         </p>
       </div>
+
+      <Notification
+        label="Petition added successfully."
+        urlLink={`petition/${petitionId}`}
+      />
     </React.Fragment>
   );
 };

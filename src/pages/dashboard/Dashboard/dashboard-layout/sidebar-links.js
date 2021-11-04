@@ -19,7 +19,7 @@ export const agencySidebarLinks = [
   {
     title: 'Petitions',
     icon: 'bi bi-ui-checks-grid',
-    url: '/agency/petitions/id',
+    url: '/agency/petitions',
   },
   {
     title: 'Agent Form',

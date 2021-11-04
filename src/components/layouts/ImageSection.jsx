@@ -11,6 +11,13 @@ export const ImageSection = ({ heading, headingcenter, data, squareImage }) => {
         >
           {heading || 'Success Stories'}
         </h2>
+        <div className="sectionImage">
+          {/* <img
+            src="https://cdn.corporatefinanceinstitute.com/assets/white-collar-crime.jpeg"
+            height="100%"
+            width="100%"
+          /> */}
+        </div>
         <div className="row">
           {data?.map(({ url: imgSrc, title, description }) => {
             return (

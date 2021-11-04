@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { timeAgo } from '../helper/time/time';
 import universalStyles from './../styles/universal.module.css';
 
 export const PetitionCard = ({ title, caseId, rest }) => {
-  const { description1 } = rest;
+  const { description1, dateCreated } = rest;
 
   return (
     <React.Fragment>
@@ -52,7 +53,7 @@ export const PetitionCard = ({ title, caseId, rest }) => {
                   Share
                 </button>
               </div>
-              <small className="text-muted">9 mins</small>
+              <small className="text-muted">{timeAgo(dateCreated)}</small>
             </div>
           </div>
         </div>

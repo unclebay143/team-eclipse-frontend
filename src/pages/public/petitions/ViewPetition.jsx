@@ -9,6 +9,7 @@ import { getAllPetitions } from '../../../redux/petition/actions/petition.action
 import { useDispatch, useSelector } from 'react-redux';
 import { PageLoader } from '../../../components/layouts/PageLoader';
 import Loader from 'react-loader-spinner';
+import { timeAgo } from '../../../components/helper/time/time';
 
 export const ViewPetition = () => {
   const { id } = useParams();
@@ -56,7 +57,8 @@ export const ViewPetition = () => {
 };
 
 export const PetitionArticle = ({ petitionData }) => {
-  const { title, type, status, description1, preferredAgency } = petitionData;
+  const { title, type, status, description1, preferredAgency, dateCreated } =
+    petitionData;
   return (
     <React.Fragment>
       <section className={`container ${styles.petitionContainer}`}>
@@ -76,13 +78,18 @@ export const PetitionArticle = ({ petitionData }) => {
             >
               {status}
             </span>
-            <span className="badge bg-danger text-uppercase">
+            <span
+              className="badge bg-danger text-uppercase"
+              style={{ marginRight: '0.5rem' }}
+            >
               {preferredAgency}
             </span>
+            <span className="badge bg-danger text-uppercase">{type}</span>
           </div>
           {/* Content */}
           <section className={universalStyles.primaryColor}>
             <p>{description1}</p>
+            <p className="small">Posted: {timeAgo(dateCreated)}</p>
           </section>
         </article>
 

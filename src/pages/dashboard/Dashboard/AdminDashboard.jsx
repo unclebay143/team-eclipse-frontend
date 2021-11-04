@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Switch } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch, useHistory } from 'react-router';
 import { DashboardNavbar } from './dashboard-layout/DashboardNavbar';
 import { dashboard, dashBoardMainBody } from './dashboard.module.css';
 import { DashboardSidebar } from './dashboard-layout/DashboardSidebar';
@@ -11,9 +11,24 @@ import { AgencyList } from './admin/manage-agency/AgencyList';
 import { AdminManagePetitions } from './admin/admin-manage-petitions/AdminManagePetition';
 import { NewAdminForm } from './admin/manage-admin/NewAdminForm';
 import { HallOfShameForm } from './admin/hall-of-shame/HallOfShameForm';
+import { loadAdminProfileWithToken } from '../../../redux/admin/actions/admin.actions';
+import { useDispatch } from 'react-redux';
+import { DashboardSuccess } from './dashboard-layout/DashboardSuccess';
 
 export const AdminDashboard = () => {
   const [pageLoading, setpageLoading] = useState(true);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    const adminToken = localStorage.getItem('jwt_admin');
+
+    if (adminToken) {
+      dispatch(loadAdminProfileWithToken(adminToken));
+    } else {
+      history.push('/admin_login');
+    }
+  }, []);
 
   // Page Loader
   if (pageLoading) return <DashboardLoader setLoading={setpageLoading} />;
@@ -37,6 +52,7 @@ export const AdminDashboard = () => {
               component={AdminManagePetitions}
             />
             <Route path="/admin/mentions" component={Mentions} />
+            <Route path="/admin/success" component={DashboardSuccess} />
             <Route path="/admin" component={AdminStatistics} />
           </Switch>
         </div>

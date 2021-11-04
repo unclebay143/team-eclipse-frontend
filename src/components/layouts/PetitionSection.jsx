@@ -26,9 +26,9 @@ export const PetitionSection = ({
             {heading || 'Public Petitions'}
           </h2>
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {petitions
-              ?.slice(0, size)
-              .reverse()
+            {[...petitions]
+              ?.reverse()
+              .slice(0, size)
               .map(({ title, caseId, ...rest }) => {
                 return (
                   <PetitionCard

@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { timeAgo } from '../../../../../components/helper/time/time';
+import { getAllPetitions } from '../../../../../redux/petition/actions/petition.actions';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
+import { store } from 'react-notifications-component';
 
 export const AdminManagePetitions = () => {
   const [loading, setloading] = useState(true);
+  const { petitions } = useSelector((state) => state.petitions);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllPetitions());
+  }, []);
 
   useEffect(() => {
     const loadtime = setTimeout(() => {
@@ -34,88 +45,54 @@ export const AdminManagePetitions = () => {
               </tr>
             </thead>
             <tbody className="small">
-              <tr>
-                <th scope="row">1</th>
-                <td>
-                  <Link
-                    to="/petitions/id"
-                    className="fs-6 text-decoration-none text-nowrap"
-                  >
-                    List group item heading
-                  </Link>
-                </td>
-                <td>20/20/2021</td>
-                <td>EFCC</td>
-                <td>Pending</td>
-                <td>
-                  <select
-                    className="form-control form-control-sm"
-                    id="exampleFormControlSelect1"
-                  >
-                    <option selected>Select option</option>
-                    <option value={1}>Open</option>
-                    <option value={2}>Close</option>
-                    <option value={3}>Delete</option>
-                    <option value={4}>Hide</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>
-                  <Link
-                    to="/petitions/id"
-                    className="fs-6 small text-decoration-none"
-                  >
-                    List group item heading
-                  </Link>
-                </td>
-                <td>20/20/2021</td>
-                <td>NPF</td>
-                <td>Pending</td>
-                <td>
-                  <select
-                    className="form-control form-control-sm"
-                    id="exampleFormControlSelect1"
-                  >
-                    <option selected>Select option</option>
-                    <option value={1}>Open</option>
-                    <option value={2}>Close</option>
-                    <option value={3}>Delete</option>
-                    <option value={4}>Hide</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>
-                  <Link
-                    to="/petitions/id"
-                    className="fs-6 small text-decoration-none"
-                  >
-                    List group item heading
-                  </Link>
-                </td>
-                <td>20/20/2021</td>
-                <td>NCDSC</td>
-                <td>Pending</td>
-                <td>
-                  <select
-                    className="form-control form-control-sm"
-                    id="exampleFormControlSelect1"
-                  >
-                    <option selected>Select option</option>
-                    <option value={1}>Open</option>
-                    <option value={2}>Close</option>
-                    <option value={3}>Delete</option>
-                    <option value={4}>Hide</option>
-                  </select>
-                </td>
-              </tr>
+              {[...petitions]?.reverse().map((petition, index) => {
+                return (
+                  <AdminManagePetitionCard
+                    petition={petition}
+                    key={petition.caseId}
+                    index={index}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>
       </div>
+    </React.Fragment>
+  );
+};
+
+export const AdminManagePetitionCard = ({ petition, index }) => {
+  const { title, description1, preferredAgency, status, dateCreated } =
+    petition;
+  return (
+    <React.Fragment>
+      <tr>
+        <th scope="row">{index + 1}</th>
+        <td>
+          <Link
+            to="/petitions/id"
+            className="fs-6 text-decoration-none text-nowrap"
+          >
+            {title}
+          </Link>
+        </td>
+        <td>{timeAgo(dateCreated)}</td>
+        <td>{preferredAgency}</td>
+        <td>{status}</td>
+        <td>
+          <select
+            className="form-control form-control-sm"
+            id="exampleFormControlSelect1"
+          >
+            <option selected>Select option</option>
+            <option value={1}>Open</option>
+            <option value={2}>Close</option>
+            <option value={3}>Delete</option>
+            <option value={4}>Hide</option>
+          </select>
+        </td>
+      </tr>
     </React.Fragment>
   );
 };

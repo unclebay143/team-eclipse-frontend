@@ -11,7 +11,6 @@ export const getAllPetitions = () => (dispatch) => {
       });
     })
     .catch((error) => {
-      //   dispatch error
       console.log(error);
     });
 };
@@ -52,13 +51,13 @@ export const updatePetitionStatus = (status, id) => (dispatch) => {
 
 export const GET_PETITION_BY_ID = 'GET_PETITION_BY_ID';
 export const getPetitionStatus = (id) => (dispatch) => {
-  PetitionService.fetchPetitionStatus(id)
+  return PetitionService.fetchPetitionStatus(id)
     .then((response) => {
       // dispatch
-      console.log(response);
+      return response;
     })
     .catch((error) => {
       // dispatch
-      console.log(error);
+      return error;
     });
 };
