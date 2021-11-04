@@ -83,9 +83,17 @@
   color: var(--app-white);
   background-color: var(--primary-color);
   border: none;
+  outline: none;
 }
 
 .bgPrimaryColor:hover {
   color: var(--app-white);
   background-color: var(--primary-color);
+  outline: none;
+}
+
+.bgPrimaryColor:focus {
+  color: var(--app-white);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 3px var(--primary-color);
 }

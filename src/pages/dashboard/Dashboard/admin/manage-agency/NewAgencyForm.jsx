@@ -1,11 +1,16 @@
 import { Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
-import { AgencyRegistrationSchema } from '../../../../../components/helper/yupFormValidation';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { AgencyRegistrationSchema } from '../../../../../components/helper/validation/yupFormValidation';
+import { adminRegisterAgency } from '../../../../../redux/admin/actions/admin.actions';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const NewAgencyForm = () => {
   const [loading, setloading] = useState(true);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const loadtime = setTimeout(() => {
@@ -32,22 +37,20 @@ export const NewAgencyForm = () => {
           }}
           validationSchema={AgencyRegistrationSchema}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
+            dispatch(adminRegisterAgency(values))
+              .then((response) => {
+                if (response.data.status) {
+                  setSubmitting(false);
+                  history.push('/admin/success');
+                }
+                setSubmitting(false);
+              })
+              .catch((error) => {
+                setSubmitting(false);
+              });
           }}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            /* and other goodies */
-          }) => (
+          {({ errors, touched, handleChange, handleSubmit, isSubmitting }) => (
             <form
               onSubmit={handleSubmit}
               className="col-12 col-md-9 col-xl-8 m-auto overflow-auto"

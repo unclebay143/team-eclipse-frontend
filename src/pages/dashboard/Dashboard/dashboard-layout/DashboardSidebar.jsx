@@ -5,7 +5,6 @@ import { adminSidebarLinks, agencySidebarLinks } from './sidebar-links';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export const DashboardSidebar = ({ userRole }) => {
-  console.log(userRole);
   var roleToSidebar = {
     agency: agencySidebarLinks,
     admin: adminSidebarLinks,
@@ -13,7 +12,6 @@ export const DashboardSidebar = ({ userRole }) => {
 
   const detectSidebar = roleToSidebar[userRole] ?? [];
 
-  console.log(detectSidebar);
   return (
     <React.Fragment>
       <div

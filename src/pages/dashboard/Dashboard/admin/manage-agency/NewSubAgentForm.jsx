@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
-import { AgentSignupSchema } from '../../../../../components/helper/yupFormValidation';
+import { AgentSignupSchema } from '../../../../../components/helper/validation/yupFormValidation';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const NewSubAgentForm = () => {

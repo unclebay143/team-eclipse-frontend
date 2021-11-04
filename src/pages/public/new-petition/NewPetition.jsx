@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Field } from 'formik';
 import styles from './new-petition.module.css';
-import { NewPetitionSchema } from '../../../components/helper/yupFormValidation';
+import { NewPetitionSchema } from '../../../components/helper/validation/yupFormValidation';
 import { createPetition } from '../../../redux/petition/actions/petition.actions';
+import { useHistory } from 'react-router';
 
 export const NewPetition = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [submissionError, setsubmissionError] = useState('');
   return (
     <React.Fragment>
       <div className={`container mt-5 ${styles.petitionFormContainer}`}>
@@ -16,12 +19,24 @@ export const NewPetition = () => {
             type: '',
             description1: '',
             description2: '',
-            document: '',
+            supportingDocuments: '',
             preferredAgency: '',
             confirmation: false,
           }}
           onSubmit={(values, { setSubmitting }) => {
-            dispatch(createPetition(values, setSubmitting));
+            dispatch(createPetition(values))
+              .then((response) => {
+                if (response.status == 200) {
+                  history.push('./success');
+                } else {
+                  setsubmissionError('Something went wrong');
+                  setSubmitting(false);
+                }
+              })
+              .catch((error) => {
+                setsubmissionError('Something went wrong');
+                setSubmitting(false);
+              });
           }}
           validationSchema={NewPetitionSchema}
         >
@@ -47,6 +62,7 @@ export const NewPetition = () => {
                     be filled in this section, else your petition will be
                     hidden.
                   </p>
+                  <p className="text-danger">{submissionError}</p>
                 </div>
                 <div className="form-group mt-4">
                   <label className="mb-2 custom-primary-color" htmlFor="title">
@@ -77,7 +93,7 @@ export const NewPetition = () => {
                     id="preferredAgency"
                     onChange={handleChange}
                   >
-                    <option value="" selected>
+                    <option value="" defaultValue>
                       Select option
                     </option>
                     <option value="efcc">EFCC</option>
@@ -104,7 +120,6 @@ export const NewPetition = () => {
                     name="description1"
                     onChange={handleChange}
                     rows={3}
-                    defaultValue={''}
                   />
                   {touched.description1 && errors.description1 ? (
                     <div className="text-danger small">
@@ -140,7 +155,7 @@ export const NewPetition = () => {
                     name="type"
                     onChange={handleChange}
                   >
-                    <option value="" selected>
+                    <option value="" defaultValue>
                       Select option
                     </option>
                     <option>Robbery</option>
@@ -154,15 +169,15 @@ export const NewPetition = () => {
                 <div className="form-group mt-4">
                   <label
                     className="mb-2 custom-primary-color"
-                    htmlFor="document"
+                    htmlFor="supportingDocuments"
                   >
                     Supporting Document
                   </label>
                   <input
                     type="file"
                     className="form-control"
-                    id="document"
-                    name="document"
+                    id="supportingDocuments"
+                    name="supportingDocuments"
                     onChange={handleChange}
                     placeholder=""
                   />
@@ -180,7 +195,6 @@ export const NewPetition = () => {
                     name="description2"
                     onChange={handleChange}
                     rows={3}
-                    defaultValue={''}
                   />
                   {touched.description2 && errors.description2 ? (
                     <div className="text-danger small">
@@ -193,7 +207,7 @@ export const NewPetition = () => {
                 <Field type="checkbox" id="confirmation" name="confirmation" />{' '}
                 <label
                   className="text custom-primary-color-danger"
-                  for="confirmation"
+                  htmlFor="confirmation"
                 >
                   I confirm that the information above are true to the best of
                   my knownledge
@@ -202,6 +216,7 @@ export const NewPetition = () => {
                   <div className="text-danger small">{errors.confirmation}</div>
                 ) : null}
               </div>
+              <p className="text-danger">{submissionError}</p>
               <div className="form-group mt-4">
                 <button className="btn btn-danger" disabled={isSubmitting}>
                   {isSubmitting ? 'Please wait...' : 'Submit'}

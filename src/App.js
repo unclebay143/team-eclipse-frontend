@@ -11,10 +11,14 @@ import { CreatePassword } from './pages/dashboard/auth/CreatePassword';
 import { Success } from './components/utils/Success';
 import { AdminDashboard } from './pages/dashboard/Dashboard/AdminDashboard';
 import { AgencyDashboard } from './pages/dashboard/Dashboard/AgencyDashboard';
+// Notification
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 function App() {
   return (
     <Provider store={store}>
+      <ReactNotification />
       <Router>
         <div className="App bg-light">
           <Switch>

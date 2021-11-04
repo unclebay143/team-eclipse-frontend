@@ -9,7 +9,6 @@ import { Layout } from '../../components/layouts/Layout';
 import { PageNotFound } from '../404/PageNotFound';
 
 export const Public = ({ match }) => {
-  console.log(match.url);
   return (
     <Layout>
       <Switch>
@@ -20,7 +19,7 @@ export const Public = ({ match }) => {
         />
         <Route path={match.url} exact={true} component={Home} />
         <Route
-          path={match.url + 'petition/id'}
+          path={match.url + 'petition/:id'}
           exact={true}
           component={ViewPetition}
         />

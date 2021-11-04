@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 export const NewPetitionSchema = Yup.object().shape({
   title: Yup.string()
     .min(5, 'Title is too short')
-    .max(30, 'Title is too long')
+    .max(50, 'Title is too long')
     .required('Title is required'),
   type: Yup.string().required('Type is required'),
   description1: Yup.string()
@@ -52,7 +52,7 @@ export const AdminRegistrationSchema = Yup.object().shape({
 });
 
 export const AdminLoginSchema = Yup.object().shape({
-  email: Yup.string().email().required('Email is required'),
+  userName: Yup.string().required('Username is required'),
   password: Yup.string().required('Password cannot be empty'),
 });
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { timeAgo } from '../helper/time/time';
 import universalStyles from './../styles/universal.module.css';
 
-export const PetitionCard = ({ title, rest }) => {
-  const { description } = rest;
+export const PetitionCard = ({ title, caseId, rest }) => {
+  const { description1, dateCreated } = rest;
+
   return (
     <React.Fragment>
       <article className="col">
@@ -28,17 +30,17 @@ export const PetitionCard = ({ title, rest }) => {
               fontWeight="600"
               fontSize="17px"
             >
-              {title.slice(0, 37)}...
+              {title?.slice(0, 37)}...
             </text>
           </svg>
           <div className="card-body">
             <p className={`card-text ${universalStyles.primaryColor}`}>
-              {description.slice(0, 110)}...
+              {description1?.slice(0, 110)}...
             </p>
             <div className="d-flex justify-content-between align-items-center">
               <div className="btn-group">
                 <Link
-                  to="/petition/id"
+                  to={`/petition/${caseId}`}
                   type="button"
                   className={`btn btn-sm ${universalStyles.filledBtnNoHover}`}
                 >
@@ -51,7 +53,7 @@ export const PetitionCard = ({ title, rest }) => {
                   Share
                 </button>
               </div>
-              <small className="text-muted">9 mins</small>
+              <small className="text-muted">{timeAgo(dateCreated)}</small>
             </div>
           </div>
         </div>

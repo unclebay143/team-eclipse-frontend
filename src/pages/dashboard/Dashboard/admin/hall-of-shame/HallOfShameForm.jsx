@@ -1,7 +1,7 @@
 import { Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
-import { NewHallOfShameSchema } from '../../../../../components/helper/yupFormValidation';
+import { NewHallOfShameSchema } from '../../../../../components/helper/validation/yupFormValidation';
 import { DashboardComponentLoader } from '../../dashboard-layout/DashboardLoader';
 
 export const HallOfShameForm = () => {

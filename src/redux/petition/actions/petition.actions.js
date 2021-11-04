@@ -4,33 +4,42 @@ export const GET_ALL_PETITIONS = 'GET_ALL_PETITIONS';
 export const getAllPetitions = () => (dispatch) => {
   PetitionService.fetchAllPetitions()
     .then((response) => {
-      // dispatch
-      console.log(response);
+      const petitions = response.data.data;
+      dispatch({
+        type: GET_ALL_PETITIONS,
+        payload: petitions,
+      });
     })
     .catch((error) => {
-      //   dispatch error
       console.log(error);
     });
 };
 
 export const CREATE_PETITION = 'CREATE_PETITION';
-export const createPetition = (formValues, setSubmitting) => (dispatch) => {
-  console.log(formValues);
-  console.log(setSubmitting);
-  PetitionService.addPetition(formValues)
+export const NEW_PETITION_STATUS = 'NEW_PETITION_STATUS';
+export const createPetition = (formValues) => (dispatch) => {
+  return PetitionService.addPetition(formValues)
     .then((response) => {
-      //   dispatch response and handle submitting
-      setSubmitting(false);
+      console.log(response);
+      dispatch({
+        type: NEW_PETITION_STATUS,
+        payload: { status: 'success', petitionId: response.data.data },
+      });
+      return response;
     })
     .catch((error) => {
-      setSubmitting(false);
-
-      // dispatch error
+      dispatch({
+        type: NEW_PETITION_STATUS,
+        payload: { status: 'failed', petitionId: '' },
+      });
+      return error;
     });
 };
 
 export const UPDATE_PETITION_STATUS = 'UPDATE_PETITION';
 export const updatePetitionStatus = (status, id) => (dispatch) => {
+  console.log('id', id);
+
   PetitionService.updatePetitionStatus(status, id)
     .then((response) => {
       // dispatch
@@ -41,12 +50,14 @@ export const updatePetitionStatus = (status, id) => (dispatch) => {
 };
 
 export const GET_PETITION_BY_ID = 'GET_PETITION_BY_ID';
-export const getPetitionById = (id) => (dispatch) => {
-  PetitionService.fetchPetitionByID(id)
+export const getPetitionStatus = (id) => (dispatch) => {
+  return PetitionService.fetchPetitionStatus(id)
     .then((response) => {
       // dispatch
+      return response;
     })
     .catch((error) => {
       // dispatch
+      return error;
     });
 };
