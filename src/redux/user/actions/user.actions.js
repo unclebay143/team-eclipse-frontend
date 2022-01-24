@@ -1,4 +1,5 @@
 export const REGISTER_NEW_ADMIN = 'REGISTER_NEW_ADMIN';
+
 export const AdminRegister =
   ({ email, password }, { setSubmitting }) =>
   (dispatch) => {
